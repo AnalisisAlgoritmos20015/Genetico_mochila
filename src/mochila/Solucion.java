@@ -46,7 +46,7 @@ public class Solucion {
         return sum;
     }
     
-    public Integer getFitness (List<Producto> productos){
+    public Integer getFitness (List<Producto> productos){ 
        Integer sum = 0;
         for (int i=0; i < this.productos.length; i++)
             sum += this.productos[i] * productos.get(i).getBeneficio();
