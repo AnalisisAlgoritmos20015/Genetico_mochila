@@ -79,14 +79,22 @@ public class Solucion {
    
     public static Solucion ruleta(List<Solucion> poblacion, Random rnd){
         double dado = rnd.nextDouble();
+        //System.out.println("dado ruleta: "+dado);
         double acu = 0.0;
         Iterator<Solucion> iter = poblacion.iterator();
-     Solucion temp = null;
-     while (iter.hasNext() && acu <= dado){
-         temp = iter.next();
-         acu += temp.getPond();
-     }
-     return temp;
+        Solucion temp = null;
+        while (iter.hasNext() && acu <= dado){
+            temp = iter.next();
+            acu += temp.getPond();
+            //System.out.println("temp: "+temp);
+            //System.out.println("temp pond: "+temp.getPond());
+            //System.out.println("acumulado ruleta while: "+acu);
+
+        }
+        //System.out.println("Solucion seleccionada: "+temp);
+        //System.out.println("acumulado ruleta: "+acu);
+        //System.out.println("-----------------------------------------");
+        return temp;
     }
   
   public static void setPond(List<Solucion> poblacion, List<Producto> productos, int sumaF){
@@ -97,8 +105,12 @@ public class Solucion {
          Integer fit = temp.getFitness(productos);
          if (fit == 0)
              temp.setPond(0);
-         else
-            temp.setPond(sumaF / temp.getFitness(productos));
+         else{
+             //System.out.println("suma total : "+(sumaF));
+             //System.out.println("Fitnes : "+temp.getFitness(productos));
+             //System.out.println("ponderacion : "+((double)temp.getFitness(productos)/sumaF));
+             temp.setPond((double)Math.round(((double)temp.getFitness(productos)/sumaF)*1000)/1000); // suponiendo que values es un double (double)Math.round(value * 100000) / 100000 redondeamos con 5 decimas
+         }
      }
      
   }

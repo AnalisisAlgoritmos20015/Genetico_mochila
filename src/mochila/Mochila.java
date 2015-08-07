@@ -112,13 +112,17 @@ public class Mochila {
         int sumaF = Solucion.sumaFitnes(poblacion, productos); //RETORNA LA SUMA DE LOS FITNES DE PUBLACION Y DE PRODUCTOS
         
         Solucion.setPond(poblacion, productos, sumaF); // NO SE PARA QUE SIRVE LA PONDERACION
-        
+        //System.out.println("tamaño Poblacion\n" + poblacion.size());
         System.out.println("Poblacion (PIMERA GENERACION)\n" + poblacion);
         
         //rnd = new Random();
-        for(int i = 0;i<10;i++){
+        while(newPoblacion.size()<10){
+            //rnd.setSeed(111);
             Solucion Ind1 = Solucion.ruleta(poblacion, rnd);
+            System.out.print("Ind1=>" + Ind1);
             Solucion Ind2 = Solucion.ruleta(poblacion, rnd);
+            System.out.print("Ind2=>" + Ind2);
+            System.out.println("===========================");
 
             //Cruzamiento
             if (rnd.nextInt(100) < probCruzamiento){
@@ -140,7 +144,7 @@ public class Mochila {
         }
         
         
-        System.out.println("Poblacion (segunda GENERACION)\n" + newPoblacion);
+        System.out.println("Poblacion (SEGUNDA GENERACION)\n" + newPoblacion);
        
         
     }
